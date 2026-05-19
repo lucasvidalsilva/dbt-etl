@@ -1,0 +1,6 @@
+ipea_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "../data/ipea_macro.duckdb"

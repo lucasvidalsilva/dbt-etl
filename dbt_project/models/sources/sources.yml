@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main
+    description: "Camada Bronze / Landing Zone contendo os dados macroeconômicos brutos extraídos diretamente da API do IPEA."
+    tables:
+      - name: raw_ipca
+        description: "Série histórica do IPCA geral mensal (Índice base dez/1993)."
+      - name: raw_pib
+        description: "Série histórica do PIB mensal a preços correntes em milhões de BRL."

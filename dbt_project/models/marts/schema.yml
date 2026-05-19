@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: economia_br
+    description: "Tabela Fato consolidada unindo IPCA e PIB mensal. Meses incompletos foram removidos para garantir precisão em modelos analíticos."
+    columns:
+      - name: mes_referencia
+        description: "Chave primária temporal (mensal)."
+        tests:
+          - unique
+          - not_null
+
+      - name: pib_milhoes_brl
+        description: "Valor do PIB em milhões de reais correntes."
+        tests:
+          - not_null

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  airflow-standalone:
+    image: apache/airflow:2.9.1
+    container_name: airflow-ipea
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - _AIRFLOW_WWW_USER_CREATE=true
+      - _AIRFLOW_WWW_USER_USERNAME=admin
+      - _AIRFLOW_WWW_USER_PASSWORD=admin
+      - _PIP_ADDITIONAL_REQUIREMENTS=dbt-duckdb ipeadatapy pandas duckdb
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - ./dbt_project:/opt/airflow/dbt_project
+      - ./data:/opt/airflow/data
+    command: standalone
